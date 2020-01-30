@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>All Fixtures</h2>
+{% for match in matches %}
+{% for key, values in match.items %}
+<ul class="list-group">
+    <strong>{{key}}</strong>
+    {% for item in values %}
+    <li class="list-group-item row">
+        <div class="col-lg-2">
+            {{item.date|date:"H:i"}}
+        </div>
+        <div class="col-lg-10">
+            <div><strong>{{item.team_1.name}} v/s {{item.team_2.name}}</strong></div>
+            <div>{{item.venue_name}}</div>
+            <div>{{item.competition.league.name}}</div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{%endfor%}
+
+{% endfor %}
+{% endblock %}

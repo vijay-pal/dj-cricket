@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{team.name}}{% endblock %}
+{% block content %}
+<h2>{{team.name}} </h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Player</th>
+        <th>50s</th>
+        <th>100s</th>
+        <th>Highest Score</th>
+        <th>Matches</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for player in players %}
+    <tr>
+        <td><img class="img-thumbnail rounded-circle" style="width: 50px; height: 50px"
+                 src="{%if player.image_uri%}{{player.image_uri.url}}{%else%}{% static 'images/avatar50x50.jpg' %}{%endif%}"/><samp
+                style="padding:4px;">{{player}}</samp>
+        </td>
+        <td>{{player.get_50s}}</td>
+        <td>{{player.get_100s}}</td>
+        <td>{{player.get_high_score}}</td>
+        <td>{{player.get_matches}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

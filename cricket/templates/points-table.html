@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{league.name}} </h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Teams</th>
+        <th>P</th>
+        <th>W</th>
+        <th>L</th>
+        <th>Pts</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for point in points %}
+    <td>{{point.team.name}}</td>
+    <td>{{point.get_total_matches}}</td>
+    <td>{{point.get_won_matches}}</td>
+    <td>{{point.get_lost_matches}}</td>
+    <td>{{point.points}}</td>
+    <tr>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

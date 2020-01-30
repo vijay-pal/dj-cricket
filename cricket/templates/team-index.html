@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row text-center text-lg-left">
+    {% for team in object_list %}
+    <div class="col-lg-3 col-md-4 col-6 panel">
+        <a href="{{team.get_absolute_url}}" class="d-block mb-4 h-100 panel-body">
+            <img class="img-fluid img-thumbnail" style="width: 200px; height: 200px"
+                 src="{%if team.logo_uri%}{{team.logo_uri.url}}{%else%}{% static 'images/default-logo.png' %}{%endif%}"/>
+            <div>
+                <div class="panel-heading"><strong>{{team.name}}</strong></div>
+            </div>
+            <div class="panel-footer">{{team.club_state}}</div>
+        </a>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}
